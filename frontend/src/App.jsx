@@ -7,21 +7,54 @@ import SignUpPage from './pages/SignUpPage'
 import LoginPage from './pages/LoginPage'
 import SettingPage from './pages/SettingPage'
 import ProfilePage from './pages/ProfilePage' 
-import axios from 'axios'
-import { axiosInstance } from './lib/axios'
+ 
 import { useAuthStore } from './store/useAuthStore'
 import {Loader} from "lucide-react"
 import { Navigate } from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
-import bgs from './assets/bgs pic.png'
+
+import { useThemeStore } from './store/useThemeStore'
  
  
  const App = () => {
-  const {authUser,checkAuth, isCheckingAutrh} =useAuthStore()
+  const { authUser, checkAuth, isCheckingAutrh } = useAuthStore()
+  const {theme} = useThemeStore();
+  const { animationsEnabled } = useThemeStore();
+
+  useEffect(() => {
+    const html = document.documentElement;
+    html.setAttribute("data-theme", theme);
+    // also set on body and root to ensure theming applies in all contexts
+    const body = document.body;
+    body.setAttribute('data-theme', theme);
+    const root = document.getElementById('root');
+    if (root) root.setAttribute('data-theme', theme);
+    console.debug('App: set data-theme to', theme, 'html/body/root attributes now:', html.getAttribute('data-theme'), body.getAttribute('data-theme'), root ? root.getAttribute('data-theme') : null);
+  }, [theme]);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const root = document.getElementById('root');
+    if (!animationsEnabled) {
+      html.classList.add('no-animations');
+      body.classList.add('no-animations');
+      if (root) root.classList.add('no-animations');
+    } else {
+      html.classList.remove('no-animations');
+      body.classList.remove('no-animations');
+      if (root) root.classList.remove('no-animations');
+    }
+    console.debug('App: animationsEnabled', animationsEnabled);
+  }, [animationsEnabled]);
+
+ 
 
   useEffect(()=>{
     checkAuth();
-  },[authUser]);
+  },[checkAuth]);
+
+  
 
   console.log({authUser});
 
@@ -36,11 +69,16 @@ import bgs from './assets/bgs pic.png'
 
 
    return (
-     <div className="min-h-screen bg-[#000035]">
+     <div className="min-h-screen text-base-content pt-20" >
+
+
+        
 
        
 
        <Navbar/>
+
+        
        <Routes>
          <Route path='/' element={authUser ? <HomePage/> :<Navigate to ="/login" /> } />
          <Route path='/signup' element={!authUser ?<SignUpPage/> : <Navigate to="/"/>} />

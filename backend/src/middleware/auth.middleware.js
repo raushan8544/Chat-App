@@ -7,6 +7,7 @@ export const potectRoute = async (req , res,next)=>{
         const token = req.cookies.jwt;
 
         if(!token){
+                console.log("potectRoute: no token in cookies");
             return res.status(400).json({
                 success:false,
                 message:"No Token provide , unauthorized "
@@ -17,6 +18,7 @@ export const potectRoute = async (req , res,next)=>{
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
         if(!decoded){
+            console.log("potectRoute: token invalid after verify");
             return res.status(401).json({
                 success:false,
                 message:"Invalid Token"

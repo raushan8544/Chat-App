@@ -19,10 +19,10 @@ const LoginPage = () => {
 
   }
  return (
-  <div className="min-h-screen flex flex-col md:flex-row bg-gray-300">
+  <div className="min-h-screen flex flex-col md:flex-row bg-gray-300 page-viewport">
     {/* LEFT: Login */}
-    <div className="flex w-full md:w-1/2 mt-20 items-center justify-center p-8">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-2xl  transform transition-transform duration-500 hover:scale-105 hover:shadow--500/50 hover:shadow-2xl ">
+    <div className="flex w-full md:w-1/2 items-center justify-center p-8">
+      <div className="w-full max-w-md animated-card md:h-[560px] h-auto overflow-hidden auth-card">
         {/* Logo / Title */}
         <div className="flex flex-col items-center gap-2 group">
           <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center group-hover:bg-red-200 transition-colors">
@@ -107,7 +107,7 @@ const LoginPage = () => {
         </form>
 
         {/* Signup link */}
-        <div className="text-center mt-4">
+        <div className="text-center text-blue-900 mt-4">
           <p>
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-red-900 font-semibold hover:underline">
@@ -123,7 +123,7 @@ const LoginPage = () => {
       <img
         src={bg}
         alt="Login background"
-        className="mt-20 w-[80%] h-[80%] object-cover rounded-lg shadow-2xl  transform transition-transform duration-500 hover:scale-105 hover:shadow-red-500/50 hover:shadow-2xl"
+        className="w-[80%] md:h-[560px] h-auto object-cover rounded-lg shadow-2xl  transform transition-transform duration-500 hover:scale-105 hover:shadow-red-500/50 hover:shadow-2xl auth-side-img"
       />
     </div>
     

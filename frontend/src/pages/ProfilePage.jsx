@@ -25,9 +25,9 @@ const ProfilePage = () => {
 
   }
     return (
-    <div className="h- pt-20 bg-gray-800">
-      <div className="max-w-2xl mx-auto p-4 py-8">
-        <div className="bg-base-300 rounded-xl p-6 space-y-8">
+    <div className="min-h-screen w-screen flex items-center justify-center bg-gray-50 overflow-hidden ">
+      <div className="max-w-2xl mx-auto p-4 py-8 w-full max-w-sm animated-card text-center">
+        <div className="bg-black-300 rounded-xl p-6 space-y-8">
           <div className="text-center">
             <h1 className="text-2xl font-semibold ">Profile</h1>
             <p className="mt-2">Your profile information</p>

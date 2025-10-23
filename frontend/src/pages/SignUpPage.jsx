@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore';
-import { MessageSquare ,User, Mail,Lock, EyeOff , Eye, Loader2} from 'lucide-react';
+import { MessageSquare ,User, Mail,Lock, EyeOff , Eye, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AuthImagePattern from '../components/AuthImagePattern';
+//import AuthImagePattern from '../components/AuthImagePattern';
 import toast from 'react-hot-toast';
 import bgs from '../assets/bgs pic.png'
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-   fullName: "",
+    fullName: "",
     email: "",
     password: "",
   });
@@ -36,11 +36,11 @@ const SignUpPage = () => {
   }
 
   return (
-  <div className="min-h-screen flex flex-col md:flex-row bg-gray-300 ">
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-300 overfkow-hidden page-viewport">
     
     {/* Left: Signup Form */}
-    <div className="flex w-full mt-20 md:w-1/2 items-center justify-center p-8">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-2xl  transform transition-transform duration-500 hover:scale-105 hover:shadow--500/50 hover:shadow-2xl">
+    <div className="flex w-full md:w-1/2 items-center justify-center p-8">
+      <div className="w-full max-w-md animated-card md:h-[560px] h-auto overflow-hidden auth-card">
         {/* Header */}
         <div className="flex flex-col items-center gap-2 group mb-6">
           <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center group-hover:bg-red-200 transition-colors">
@@ -139,7 +139,7 @@ const SignUpPage = () => {
         </form>
 
         {/* Footer */}
-        <div className="text-center mt-2">
+        <div className="text-center text-blue-900 mt-2">
           <p>
             Already have an account?{" "}
             <Link to="/login" className="text-red-700 font-semibold hover:underline">
@@ -155,7 +155,7 @@ const SignUpPage = () => {
       <img
         src={bgs}
         alt="Signup Illustration"
-        className="w-[80%] h-[85%] mt-20 object-cover rounded-2xl shadow-2xl transform transition-transform duration-500 hover:scale-105 hover:shadow-red-500/50 hover:shadow-2xl"
+        className="w-[80%] md:h-[560px] h-auto object-cover rounded-2xl shadow-2xl transform transition-transform duration-500 hover:scale-105 hover:shadow-red-500/50 hover:shadow-2xl auth-side-img"
       />
     </div>
   </div>
