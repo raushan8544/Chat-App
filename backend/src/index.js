@@ -8,12 +8,15 @@ import cookieParser from "cookie-parser";
 import { connectDB } from './database/db.js';
 import { app , server} from './database/socket.io.js'
 
+import path from 'path';
+
 dotenv.config();
 
 console.log('OPENAI_API_KEY loaded:', Boolean(process.env.OPENAI_API_KEY));
 
  
 const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
 // ✅ Always set limit BEFORE routes and only once
 app.use(cors({
@@ -29,6 +32,16 @@ app.use(cookieParser());
 // ✅ Register routes after middleware
 app.use('/api/auth', authRouter);
 app.use('/api/messages', messageRouter);
+
+// ✅ Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  });
+}
+
 
 // ✅ Start server
 server.listen(PORT, () => {

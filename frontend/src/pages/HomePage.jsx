@@ -12,7 +12,7 @@ const HomePage = () => {
 
 
   return (
-    <div className='h-screen bg-gradient-to-br from-purple-200 via-pink-100 to-yellow-50'>
+    <div className='overflow-hidden h-screen bg-gradient-to-br from-purple-200 via-pink-100 to-yellow-50'>
       <div className='flex items-center justify-center pt-20 px-4'>
         <div className='bg-white/40 backdrop-blur-sm rounded-2xl shadow-cl w-full max-w-6xl h-[calc(100vh-8rem)] border border-white/20 overflow-hidden relative'>
 
@@ -22,7 +22,7 @@ const HomePage = () => {
             <div className='homepage-blob hb3' />
           </div>
 
-          <div className='flex h-full rounded-lg overflow-hidden relative z-10'>
+          <div className=' flex h-full rounded-lg overflow-hidden relative z-10'>
             <Sidebar />
 
             {!selectedUser ? <NoChatSelected/> : <ChatContainer />}
